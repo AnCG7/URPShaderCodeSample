@@ -6,7 +6,7 @@ Unity URP Shader 代码示例使用 Unity 2020.3.18f1c1 以及 Universal RP 10.6
 
 # 简介
 
-​   自学过程中发现大量的资料要不么是代码段，要么是Unity 的build-in shader的实现，而URP自带的shader被封装的太深，keywords又太多不方便学习。我想要一些简单纯粹的URP自定义Shader的实现，所以我为了方便学习和作为其他URP Shader编写的参考，写了一系列常见shader代码。
+   自学过程中发现大量的资料要不么是代码段，要么是Unity 的build-in shader的实现，而URP自带的shader被封装的太深，keywords又太多不方便学习。我想要一些简单纯粹的URP自定义Shader的实现，所以我为了方便学习和作为其他URP Shader编写的参考，写了一系列常见shader代码。
 
 ​		因为并不是为了创建自己的shader库或者直接使用而写的所以代码没有优化，而是以方便阅读和学习的方式书写。
 
@@ -22,7 +22,7 @@ Unity URP Shader 代码示例使用 Unity 2020.3.18f1c1 以及 Universal RP 10.6
 
 ##### Base
 
-Texture、Color、Transparent、AlphaTest、Fog、Fresnel、Noise
+Texture、Color、Transparent、AlphaTest、Fog、Fresnel、Noise、UVCheck、NormalCheck、TangentCheck、BitangentCheck、VertexColor、VertexAnimation、TextureScrollUV、TextureScreenSpace
 
 ##### Lighting
 
@@ -30,7 +30,7 @@ Ambient、Anisotropic (Hair)、BackLight、Blinn-Phong Lighting、Blinn-Phong Sp
 
 BumpMap (Normal Map)、Lambert、Half-Lambert、Wrap、Lightmap、LightProbe、ReflectionProbe、Minnaert、Oren-Nayer、Multi-Lighting、
 
-Shadow、ReceiveShadow、PBR Common、PBR In Unity URP
+Shadow、ReceiveShadow、PBR Common、PBR In Unity URP、MatCap
 
 
 
