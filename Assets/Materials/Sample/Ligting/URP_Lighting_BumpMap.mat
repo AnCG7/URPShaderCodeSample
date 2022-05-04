@@ -19,11 +19,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 862cd7d6c01e90449b215492efadbe2f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpTexture:
-        m_Texture: {fileID: 2800000, guid: 684a36c3104b207438d37300960123c2, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _BumpScale: 1
     - _Threshold: 1
     m_Colors: []
   m_BuildTextureStacks: []

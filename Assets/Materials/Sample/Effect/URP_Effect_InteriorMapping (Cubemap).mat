@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: URP_Effect_InteriorMapping (Cubemap)
+  m_Shader: {fileID: 4800000, guid: ed599a2a22731494f8657ae31873e568, type: 3}
+  m_ShaderKeywords: _TILINGMODE_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CubeMap:
+        m_Texture: {fileID: 8900000, guid: 1b970523beb60b244a873d19e5005120, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _RoomDepth: 1
+    - _RoomHeight: 1
+    - _RoomWidth: 1
+    - _TilingMode: 1
+    m_Colors: []
+  m_BuildTextureStacks: []

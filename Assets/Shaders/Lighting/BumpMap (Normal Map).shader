@@ -2,8 +2,8 @@ Shader "Lakehani/URP/Lighting/BumpMap"
 {
     Properties
     {
-        _BumpTexture("Normal Texture", 2D) = "white" {}
-        _Threshold("Threshold",float) = 1.0
+        _BumpMap("Normal Map", 2D) = "bump" {}
+        _BumpScale("Normal Scale",float) = 1.0
     }
 
     SubShader
@@ -40,11 +40,11 @@ Shader "Lakehani/URP/Lighting/BumpMap"
             };
 
             CBUFFER_START(UnityPerMaterial)
-            float4 _BumpTexture_ST;
-            float _Threshold;
+            float4 _BumpMap_ST;
+            float _BumpScale;
             CBUFFER_END
 
-            TEXTURE2D(_BumpTexture);SAMPLER(sampler_BumpTexture);
+            TEXTURE2D(_BumpMap);SAMPLER(sampler_BumpMap);
 
             Varyings vert(Attributes IN)
             {
@@ -52,7 +52,7 @@ Shader "Lakehani/URP/Lighting/BumpMap"
                 float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
                 OUT.positionHCS = TransformWorldToHClip(positionWS);
 
-                OUT.uv = TRANSFORM_TEX(IN.uv, _BumpTexture);
+                OUT.uv = TRANSFORM_TEX(IN.uv, _BumpMap);
 
                 OUT.viewWS = GetWorldSpaceViewDir(positionWS);
 
@@ -67,9 +67,9 @@ Shader "Lakehani/URP/Lighting/BumpMap"
             half4 frag(Varyings IN) : SV_Target
             {
                 //也可以直接使用宏SampleNormal，但是需要自己加宏定义，具体见 SurfaceInput.hlsl 
-                half4 n = SAMPLE_TEXTURE2D(_BumpTexture, sampler_BumpTexture, IN.uv);
+                half4 n = SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, IN.uv);
                 //注意取出的法线贴图是在切线空间的
-                half3 normalTS = UnpackNormalScale(n, _Threshold);
+                half3 normalTS = UnpackNormalScale(n, _BumpScale);
                 //把取出来的法线贴图转换到世界空间
                 half3 normalWS = TransformTangentToWorld(normalTS,half3x3(IN.tangentWS.xyz, IN.bitangentWS.xyz, IN.normalWS.xyz));
                 normalWS = normalize(normalWS);
