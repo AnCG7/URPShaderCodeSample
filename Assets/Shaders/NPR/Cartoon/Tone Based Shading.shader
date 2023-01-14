@@ -12,7 +12,7 @@
 
 
 
-Shader "Lakehani/URP/UPR/Cartoon/Tone Based Shading"
+Shader "Lakehani/URP/NPR/Cartoon/Tone Based Shading"
 {
     Properties
     {

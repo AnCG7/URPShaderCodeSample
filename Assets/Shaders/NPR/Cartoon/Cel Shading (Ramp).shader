@@ -8,7 +8,7 @@
 //渲染过程分为着色、外描边、边缘光、高光，这里我只先列举着色部分
 //注意我提供的常见的几个Ramp纹理Hard、Soft、3level，都是我为了适配Lambert漫反射的映射画出来的，记得把图片的Wrap Mode改为Clamp否则采样到边缘的时候会有误差
 
-Shader "Lakehani/URP/UPR/Cartoon/Cel Shading Ramp"
+Shader "Lakehani/URP/NPR/Cartoon/Cel Shading Ramp"
 {
     Properties
     {

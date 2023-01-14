@@ -7,7 +7,7 @@
 //因为菲涅尔是是是法线和视角夹角越大越亮，所以映射[0,1],从上到下越来越亮【图层B】
 //然后用 线性减淡（添加）也就是加法的图层混合模式就好了
 //我的示例图片看 Hard (Fresnel)
-Shader "Lakehani/URP/UPR/Cartoon/Cel Shading Ramp Fresnel"
+Shader "Lakehani/URP/NPR/Cartoon/Cel Shading Ramp Fresnel"
 {
     Properties
     {

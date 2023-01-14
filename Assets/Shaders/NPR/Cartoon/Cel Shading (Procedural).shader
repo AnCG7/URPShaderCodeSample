@@ -5,7 +5,7 @@
 //因为实际情况中是以美术效果为准，做法非常多，没有什么像公式一样的通用标准的参数，所以这里我举例了2分色（只有2种颜色过渡）的代码供参考
 
 
-Shader "URP/Toon/Cel-Shading Procedural"
+Shader "Lakehani/URP/NPR/Cartoon/Cel-Shading Procedural"
 {
     Properties
     {

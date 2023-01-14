@@ -4,7 +4,7 @@
 //当然可以把高光和漫反射画到一张Ramp上
 //例如Ramp的UV[0,x]表示漫反射，[1,x]表示高光
 
-Shader "Lakehani/URP/UPR/Cartoon/Cel Shading Ramp Specular"
+Shader "Lakehani/URP/NPR/Cartoon/Cel Shading Ramp Specular"
 {
     Properties
     {
