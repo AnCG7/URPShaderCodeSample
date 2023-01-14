@@ -10,6 +10,7 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -72,5 +73,5 @@ Assets/BuildReports.meta
 Assets/UPRLuaDeepProfilerAssetSetting.asset
 Assets/UPRLuaDeepProfilerAssetSetting.asset.meta
 Assets/UPRTools.meta
-Assets/Screenshot/
+/Screenshot/
 .editorconfig
