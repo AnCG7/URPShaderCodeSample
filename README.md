@@ -40,7 +40,9 @@ Cel Shading (Ramp)、Cel Shading (Ramp Specular)、Cel Shading (Ramp Fresnel)、
 
 Edge Detection Color、Edge Detection Depth、Edge Detection DepthNormal
 
+##### Tools
 
+Capture Screenshot 、Outline Smooth Normals Tool
 
 ## 参考资料
 

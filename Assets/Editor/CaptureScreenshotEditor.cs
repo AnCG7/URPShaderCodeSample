@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -7,7 +7,7 @@ using System.IO;
 [InitializeOnLoad]
 public static class CaptureScreenshotEditor
 {
-    [MenuItem("Tools/CaptureScreenshot %&s")]
+    [MenuItem("Tools/Capture Screenshot %&s")]
     public static void CaptureScreenshot()
     {
         string path = Application.dataPath + "/../Screenshot/";
