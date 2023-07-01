@@ -6580,7 +6580,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299473046172601547, guid: 10902caceb754bf4bad9505bd1e4075e, type: 3}
       propertyPath: m_text
-      value: "Stylized Highlight Transform\n\u98CE\u683C\u5316\u9AD8\u5149 \u53D8\u6362\n(\u5E73\u79FB\uFF0C\u65CB\u8F6C\uFF0C\u7F29\u653E\uFF0C\u5206\u5757\uFF0C\u65B9\u5757\u5316)"
+      value: "Stylized Highlight Transform\n\u98CE\u683C\u5316\u9AD8\u5149 \u53D8\u6362\n(\u5E73\u79FB\uFF0C\u65CB\u8F6C\uFF0C\u7F29\u653E\uFF0C\u5206\u5272\uFF0C\u65B9\u5757\u5316)"
       objectReference: {fileID: 0}
     - target: {fileID: 299473046172601547, guid: 10902caceb754bf4bad9505bd1e4075e, type: 3}
       propertyPath: m_fontSize
