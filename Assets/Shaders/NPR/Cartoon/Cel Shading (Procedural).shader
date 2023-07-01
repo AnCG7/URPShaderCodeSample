@@ -85,7 +85,7 @@ Shader "Lakehani/URP/NPR/Cartoon/Cel-Shading Procedural"
                 float3 halfVec = SafeNormalize(float3(light.direction) + float3(viewWS));
                 half NdotH = saturate(dot(normalWS, halfVec));
 
-                //【标记B】利用fwidth + smoothstep来平滑过渡反走样好处是在近距离和远距离观察都很清晰，固定值在近距离观察时会有点糊
+                //【标记B】:利用fwidth + smoothstep来平滑过渡反走样好处是在近距离和远距离观察都很清晰，固定值在近距离观察时会有点糊
                 //更多的教程长这个样子，我在《Unity Shader 入门精要》中也找到了这几行代码，写出来作为参考
                 //fixed spec = dot(worldNormal, worldHalfDir);
 	            //fixed w = fwidth(spec) * 2.0;
