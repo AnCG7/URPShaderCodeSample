@@ -34,7 +34,7 @@ Fractal (Mandelbrot)、InteriorMapping (Cubemap)、InteriorMapping (Pre-Projecte
 
 ###### Cartoon
 
-Cel Shading (Ramp)、Cel Shading (Ramp Specular)、Cel Shading (Ramp Fresnel)、Cel Shading (Procedural)、Tone Based Shading、Outline (Rim)、Outline (Z-Bias)、Outline (Shell Method)、Inner Line (BenCunXian)、Inner Line (Distance Field)
+Cel Shading (Ramp)、Cel Shading (Ramp Specular)、Cel Shading (Ramp Fresnel)、Cel Shading (Procedural)、Tone Based Shading、Outline (Rim)、Outline (Z-Bias)、Outline (Shell Method)、Inner Line (BenCunXian)、Inner Line (Distance Field)、Stylized Highlight (Clear Coat)、Stylized Highlight (Transform)、Stylized Highlight (Spread)
 
 ###### Edge Detection
 
