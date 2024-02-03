@@ -4371,7 +4371,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299473046172601547, guid: 10902caceb754bf4bad9505bd1e4075e, type: 3}
       propertyPath: m_text
-      value: "Rimlight Depth Offset Rim\n\u5C4F\u5E55\u7A7A\u95F4\u6DF1\u5EA6\u504F\u79FB\u8FB9\u7F18\u5149\n(\u786C\u8868\u9762\u4E0A\u6BD4\u83F2\u6D85\u5C14\u6709\u66F4\u597D\u7684\u6548\u679C)"
+      value: "Rimlight Depth Offset\n\u5C4F\u5E55\u7A7A\u95F4\u6DF1\u5EA6\u504F\u79FB\u8FB9\u7F18\u5149\n(\u786C\u8868\u9762\u4E0A\u6BD4\u83F2\u6D85\u5C14\u6709\u66F4\u597D\u7684\u6548\u679C)"
       objectReference: {fileID: 0}
     - target: {fileID: 299473046172601547, guid: 10902caceb754bf4bad9505bd1e4075e, type: 3}
       propertyPath: m_fontSize
