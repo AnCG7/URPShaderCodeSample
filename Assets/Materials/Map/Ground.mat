@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: URP_Lighting_UnityPBRInURP
+  m_Name: Ground
   m_Shader: {fileID: 4800000, guid: 9ad6cb9b1fc2a9d4f80a4b78e4dd9564, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

@@ -1,16 +1,14 @@
-
-
-//参考论文
-//论文1：Anjyo K I , Hiramitsu K .Stylized Highlights for Cartoon Rendering and Animation[J].Computer Graphics & Applications IEEE, 2003, 23(4):54-61.DOI:10.1109/MCG.2003.1210865. 
-
-//论文2: 苏延辉,韦欢,费广正,等.卡通高光的风格化算法及其实现[C]//中国计算机图形学大会.2006.
-
-
+//使用公式变换高光，使高光可以有：平移，旋转，缩放，分割，方块化 的效果
+//如果不想通过公式计算，也可以使用纹理自定义高光的形状，具体参考Shader: Stylized Highlight Texture
 //代码几乎是根据 论文1 和 NPR_Lab(看下面的链接) 写的，主要思想是在切线空间变换Blinn高光计算中的半程向量H，以此来调整H和法线的关系，使其表现发生变化
 //使其表现出来：平移，旋转，缩放，分割，方块化 的效果，这些效果是可以组合的在一起的
 //论文2 中有一个关于 方块化 实现的稍微修改，所以我也记录了进来
 
 //因为是在切线空间，所以可能需要注意一下切线的平滑程度
+
+//参考论文
+//论文1：Anjyo K I , Hiramitsu K .Stylized Highlights for Cartoon Rendering and Animation[J].Computer Graphics & Applications IEEE, 2003, 23(4):54-61.DOI:10.1109/MCG.2003.1210865. 
+//论文2: 苏延辉,韦欢,费广正,等.卡通高光的风格化算法及其实现[C]//中国计算机图形学大会.2006.
 
 //其他参考：
 //https://github.com/candycat1992/NPR_Lab
