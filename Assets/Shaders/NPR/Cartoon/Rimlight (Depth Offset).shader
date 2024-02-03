@@ -166,24 +166,49 @@ Shader "Lakehani/URP/NPR/Cartoon/Rimlight Depth Offset"
 
         Pass
         {
+            //参考
+            //Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl
+            //Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl
             //写入深度图
             Name "DepthOnly"
             Tags{"LightMode" = "DepthOnly"}
 
-            Cull Back
-            Blend One Zero
-            ZTest LEqual
+           Name "DepthOnly"
+            Tags{"LightMode" = "DepthOnly"}
+
             ZWrite On
             ColorMask 0
 
             HLSLPROGRAM
-            // Required to compile gles 2.0 with standard srp library
 
             #pragma vertex DepthOnlyVertex
             #pragma fragment DepthOnlyFragment
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+            struct Attributes
+            {
+                float4 position     : POSITION;
+            };
+
+            struct Varyings
+            {
+                float4 positionCS   : SV_POSITION;
+            };
+
+            Varyings DepthOnlyVertex(Attributes input)
+            {
+                Varyings output;
+                output.positionCS = TransformObjectToHClip(input.position.xyz);
+                return output;
+            }
+
+            half4 DepthOnlyFragment(Varyings input) : SV_TARGET
+            {
+               
+                return 0;
+            }
+
             ENDHLSL
         }
     }
