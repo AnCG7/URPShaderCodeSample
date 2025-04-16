@@ -2,7 +2,7 @@
 
 <img src="Images/Content.png" style="zoom:75%;" />
 
-Unity URP Shader 代码示例使用 Unity 2020.3.18f1c1 以及 Universal RP 10.6.0 编写和测试
+Unity URP Shader 代码示例使用 Unity 2022.3.55f1c1、 Universal RP 14.0.11 、DX、Forward下编写和测试
 
 # 简介
 
@@ -28,7 +28,9 @@ Ambient、Anisotropic (Hair)、BackLight、Blinn-Phong Lighting、Blinn-Phong Sp
 
 ##### Effect
 
-Fractal (Mandelbrot)、InteriorMapping (Cubemap)、InteriorMapping (Pre-Projected)
+Fractal (Mandelbrot)、InteriorMapping (Cubemap)、InteriorMapping (Pre-Projected)、
+
+SimpleDecal(ScreenSpace)
 
 ##### NPR
 
