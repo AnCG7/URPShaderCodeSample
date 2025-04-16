@@ -164,6 +164,7 @@ public class SimpleDecalRenderPass : ScriptableRenderPass
         {
             SimpleDecalDataManager.UpdateMaterialProperty(decalData);
             //可以通过配套使用DrawMeshInstanced来优化
+            //也可以参考Unity自己的贴花DecalDrawSystem中的Graphics.DrawMesh和context.DrawRenderers配合绘制
             cmd.DrawMesh(
                 decalData.projectorMesh,//这里通过绘制一个cube和投影的box一致来覆盖渲染的区域，而不是一个全屏的quad，因为全屏的quad渲染时屏占比很多，但是其实我们其实只是要渲染一部分
                 decalData.projectorMeshMatrix,
