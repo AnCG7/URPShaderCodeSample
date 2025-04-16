@@ -1,3 +1,7 @@
+/*
+    *用来预渲染_DecalRenderingLayerMask，在SimpleDecal.shader中会使用到,用于根据物体的RenderingLayerMask来判断是否需要裁剪
+*/
+
 Shader "Lakehani/URP/Effect/SimpleDecalPreRender"
 {
     Properties
@@ -43,6 +47,7 @@ Shader "Lakehani/URP/Effect/SimpleDecalPreRender"
 
             float4 frag(Varyings IN) : SV_Target
             {
+                //unity内置的渲染层信息函数
                 uint renderingLayers = GetMeshRenderingLayer();
                 return float4(EncodeMeshRenderingLayer(renderingLayers), 0, 0, 0);
             }

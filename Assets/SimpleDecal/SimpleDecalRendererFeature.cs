@@ -1,4 +1,8 @@
-
+/*
+ * SimpleDecalRendererFeature 负责处理贴花的渲染过程
+ * SimpleDecalPrerenderPass 负责处理贴花的预渲染过程，主要是我们要自定义渲染RenderingLayerMask，而不是完全用Unity内置的
+ * SimpleDecalRenderPass 负责处理贴花的渲染过程
+ */
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;

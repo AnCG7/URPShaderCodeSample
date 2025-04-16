@@ -1,3 +1,8 @@
+/*
+    *系统说明看SimpleDecalProjector.cs
+    *负责贴花的具体裁剪、投影、混合、光照计算等
+    *
+*/
 Shader "Lakehani/URP/Effect/SimpleDecal"
 {
     Properties
@@ -37,7 +42,7 @@ Shader "Lakehani/URP/Effect/SimpleDecal"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareNormalsTexture.hlsl"
-            // #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareRenderingLayerTexture.hlsl"//方便学习，使用自定义RT而不是Unity默认的
+            //#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareRenderingLayerTexture.hlsl"//方便学习，使用自定义RT而不是Unity默认的
 
             struct Attributes
             {
@@ -105,10 +110,12 @@ Shader "Lakehani/URP/Effect/SimpleDecal"
                 
                 float2 screenUV = IN.positionHCS.xy / _ScreenParams.xy;
 
+                //判断是否在渲染层范围内
                 uint renderingLayer = SampleSceneRenderingLayer(screenUV);
                 uint projectorRenderingLayer = uint(_DecalRenderingLayerMask);
                 clip((renderingLayer & projectorRenderingLayer) - 0.1);
-                
+
+                //通过深度值计算世界坐标
                 float depth = SampleSceneDepth(screenUV);
                 float3 worldPos = ComputeWorldSpacePosition(screenUV, depth, UNITY_MATRIX_I_VP);
                 float4 localPos = mul(_DecalWToLMatrix, float4(worldPos, 1.0));
@@ -143,9 +150,10 @@ Shader "Lakehani/URP/Effect/SimpleDecal"
                 texUV = TRANSFORM_TEX(texUV, _MainTex);
                 half4 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, texUV);
                 albedo *= _BaseColor;
-                
+
+                //正常采样法线贴图
                 float3 normalTS = UnpackNormalScale(SAMPLE_TEXTURE2D(_NormalTex, sampler_NormalTex, texUV), _NormalScale);
-                //_NormalToWorldMatrix是C#传递过来的
+                //但是法线是切线空间的需要转到世界空间，_NormalToWorldMatrix是C#传递过来的
                 float3 normalWS = TransformTangentToWorld(normalTS,_NormalToWorldMatrix);
                 normalWS = normalize(normalWS);
                 
@@ -162,7 +170,7 @@ Shader "Lakehani/URP/Effect/SimpleDecal"
                 
                 float3 viewDir = GetWorldSpaceNormalizeViewDir(worldPos);
                 
-                // 使用 LightingSpecular 函数计算高光
+                //使用 LightingSpecular 函数计算高光
                 half3 specular = LightingSpecular(half3(lightColor), half3(lightDir), half3(normalWS), half3(viewDir), _Specular, _Smoothness);
                 
                 float3 lighting = diffuse + float3(specular);

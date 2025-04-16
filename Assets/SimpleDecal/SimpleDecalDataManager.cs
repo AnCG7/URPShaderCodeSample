@@ -1,3 +1,6 @@
+/*
+ * 负责贴花投影器的数据部分的添加更新和移除操作，以及一些公共的方法
+ */
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
