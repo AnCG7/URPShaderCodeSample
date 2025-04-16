@@ -28,9 +28,7 @@ Ambient、Anisotropic (Hair)、BackLight、Blinn-Phong Lighting、Blinn-Phong Sp
 
 ##### Effect
 
-Fractal (Mandelbrot)、InteriorMapping (Cubemap)、InteriorMapping (Pre-Projected)、
-
-SimpleDecal(ScreenSpace)
+Fractal (Mandelbrot)、InteriorMapping (Cubemap)、InteriorMapping (Pre-Projected)、SimpleDecal(ScreenSpace)
 
 ##### NPR
 
