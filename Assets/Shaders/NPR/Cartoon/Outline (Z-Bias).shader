@@ -1,6 +1,6 @@
 //Z-Bias渲染背面而不是渲染正面，然后观察空间下物体的顶点的Z值沿着相机方向移动一点距离，也就是更靠近摄像机，使得边缘凸出
 //该方式等于是又将物体画了一遍，所以我们有2个Pass，第1个Pass正常画，第2个Pass是轮廓
-//想要2个Pass，简单的办法就是在RendererDeature上加一个LightMode Tags，注意看主摄像机的Renderer是CartoonRenderer
+//想要2个Pass，简单的办法就是在RendererFeature上加一个LightMode Tags，注意看主摄像机的Renderer是CartoonRenderer
 //CartoonRenderer直接从默认的ForwardRenderer复制的，啥也没改，因为我不想影响其他的东西，然后加了个Render Objects并添加了一个叫Outline的LightMode
 //所以我下面的第2个Pass叫Outline
 //轮廓只画背面，所以需要Cull Front

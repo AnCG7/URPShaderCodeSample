@@ -1,0 +1,95 @@
+//本质上这是个距离场，这里只是作为一种可实现的做法。对于有向距离场资料【1】是不错的参考。
+//参考
+//【1】https://zznewclear13.github.io/posts/calculate-signed-distance-field-using-compute-shader/
+//https://github.com/alpacasking/JumpFloodingAlgorithm
+//https://blog.demofox.org/2016/02/29/fast-voronoi-diagrams-and-distance-dield-textures-on-the-gpu-with-the-jump-flooding-algorithm/
+
+
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel InitSeed
+#pragma kernel FillDistanceTransform
+#pragma kernel JFA
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+
+Texture2D _Texture;
+SamplerState sampler_Texture;
+
+int Width;
+int Height;
+RWTexture2D<float4> Source;
+RWTexture2D<float4> Result;
+int Step;
+
+// 添加读取和写入通道参数
+int ReadChannel; // 0: R, 1: G, 2: B, 3: A
+int WriteChannel; // 0: R, 1: G, 2: B, 3: A
+
+uint2 BoundIndex(uint2 i){
+	return uint2(clamp(i.x,0,Width),clamp(i.y,0,Height));
+}
+
+void GetMinDistancePoint(float2 curPos,float3 tarInfo,inout float4 minInfo)
+{
+	// z channel is seed ID
+	if(tarInfo.z > 0 ){
+		float distance = dot(curPos - tarInfo.xy,curPos - tarInfo.xy);
+		if(distance < minInfo.w){
+			minInfo = float4( tarInfo, distance);
+		}
+	}
+}
+
+[numthreads(8,8,1)]
+void InitSeed (uint3 id : SV_DispatchThreadID)
+{
+	float2 uv = float2(id.x / (float)Width, id.y / (float)Height);
+    half4 colorData = _Texture.SampleLevel(sampler_Texture, uv,0);
+    // 根据读取通道获取对应的值
+    float readValue = 0;
+    if(ReadChannel == 0) readValue = colorData.r;
+    else if(ReadChannel == 1) readValue = colorData.g;
+    else if(ReadChannel == 2) readValue = colorData.b;
+    else if(ReadChannel == 3) readValue = colorData.a;
+
+	if(readValue < 0.5)
+		Source[id.xy] = float4(0,0,0,0);
+	else
+		Source[id.xy] = float4(id.x,id.y,1,1);
+}
+
+
+[numthreads(8,8,1)]
+void JFA (uint3 id : SV_DispatchThreadID)
+{
+	// seed position,seed ID and distance with seed
+	float4 minInfo = float4(0,0,0,999999);
+	GetMinDistancePoint(id.xy,Source[id.xy].xyz,minInfo);
+	GetMinDistancePoint(id.xy,Source[BoundIndex(id.xy + uint2(-Step,-Step))].xyz,minInfo);
+    GetMinDistancePoint(id.xy,Source[BoundIndex(id.xy + uint2(-Step,Step))].xyz,minInfo);
+	GetMinDistancePoint(id.xy,Source[BoundIndex(id.xy + uint2(-Step,0))].xyz,minInfo);
+	GetMinDistancePoint(id.xy,Source[BoundIndex(id.xy + uint2(0,-Step))].xyz,minInfo);
+	GetMinDistancePoint(id.xy,Source[BoundIndex(id.xy + uint2(0,Step))].xyz,minInfo);
+	GetMinDistancePoint(id.xy,Source[BoundIndex(id.xy + uint2(Step,-Step))].xyz,minInfo);
+	GetMinDistancePoint(id.xy,Source[BoundIndex(id.xy + uint2(Step,0))].xyz,minInfo);
+	GetMinDistancePoint(id.xy,Source[BoundIndex(id.xy + uint2(Step,Step))].xyz,minInfo);
+	Result[id.xy] = minInfo;
+}
+
+
+[numthreads(8,8,1)]
+void FillDistanceTransform (uint3 id : SV_DispatchThreadID)
+{
+	float4 info = Source[id.xy];
+	float factor = Width;
+	float intensity =  1-sqrt(info.w) / factor;
+	float4 resultColor = float4(0,0,0,1);
+	// 根据写入通道设置对应的值
+	if(WriteChannel == 0) resultColor.r = intensity;
+	else if(WriteChannel == 1) resultColor.g = intensity;
+	else if(WriteChannel == 2) resultColor.b = intensity;
+	else if(WriteChannel == 3) resultColor.a = intensity;
+
+	Result[id.xy] = resultColor;
+}

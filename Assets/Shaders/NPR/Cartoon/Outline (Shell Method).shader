@@ -4,7 +4,7 @@
 //该方法通过使顶点沿法线方向平移来达到描边的效果
 
 //该方式等于是又将物体画了一遍，所以我们有2个Pass，第1个Pass正常画，第2个Pass是轮廓
-//想要2个Pass，简单的办法就是在RendererDeature上加一个LightMode Tags，注意看主摄像机的Renderer是CartoonRenderer
+//想要2个Pass，简单的办法就是在RendererFeature上加一个LightMode Tags，注意看主摄像机的Renderer是CartoonRenderer
 //CartoonRenderer直接从默认的ForwardRenderer复制的，啥也没改，因为我不想影响其他的东西，然后加了个Render Objects（内置的东西）并添加了一个叫Outline的LightMode
 //所以我下面的第2个Pass叫Outline
 //轮廓只画背面，所以需要Cull Front
@@ -123,7 +123,7 @@ Shader "Lakehani/URP/NPR/Cartoon/Outline Shell Method"
                 //如果平滑后的法线数据被存在UV3中，UV1/UV2一般都会被其他功能占用，所以建议UV3开始
                 #ifdef _SMOOTHEDNORMALDATA_UV3
                     //使用压缩数据，这里的数据是通过平滑工具将法线的3个float压成2个float并存入UV3，下面是解码，具体压缩看OutlineSmoothNormalsToolEditor.cs
-                    //注：不用非常纠结这是个什么算法，等同于x=0.1 y=0.2 z=0.3 ，然后拼接在一起等于uv3.x = 0.1 + 0.002 = 0.102(2个float转1个)，uv.y = z，解的时候反过来
+                    //注：不用非常纠结这是个什么算法，等同于x=0.1 y=0.2 z=0.3 ，然后拼接在一起等于uv3.x = 0.1 + 0.002 = 0.102(2个float转1个)，uv3.y = z，解的时候反过来
                     #ifdef _COMPRESSMETHOD_COMPRESS
                         float2 compressedData = IN.uv3.xy;
                         float2 decodeMul = float2(1.0,65025.0);
@@ -167,7 +167,7 @@ Shader "Lakehani/URP/NPR/Cartoon/Outline Shell Method"
 
 
                 ////【B】转换到观察空间，对于内凹的模型（例如：环体Torus），可能发生背面面片遮挡住正面面片的情况，所以让顶点法线的z分量等于一个恒定的值
-                ////然后归一化并座位扩张用的向量，扩张后的背面更加扁平，降低遮挡正面面片的可能性
+                ////然后归一化并作为扩张用的向量，扩张后的背面更加扁平，降低遮挡正面面片的可能性
                 //float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
                 //float3 positionVS = TransformWorldToView(positionWS);
                 //float3 normalVS = TransformWorldToViewDir(TransformObjectToWorldNormal(IN.normalOS));
