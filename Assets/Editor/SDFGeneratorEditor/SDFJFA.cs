@@ -122,7 +122,6 @@ namespace SDFGenerator2D
 				default:
 					return 0;
 			}
-			return 0;
 		}
 	}
 }

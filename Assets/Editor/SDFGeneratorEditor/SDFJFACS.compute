@@ -83,7 +83,7 @@ void FillDistanceTransform (uint3 id : SV_DispatchThreadID)
 {
 	float4 info = Source[id.xy];
 	float factor = Width;
-	float intensity =  1-sqrt(info.w) / factor;
+	float intensity =  1-sqrt(info.w) / factor;//这里可以修改，更好的将距离映射到纹理，例如 float intensity =  1-exp(-sqrt(info.w)*0.1);
 	float4 resultColor = float4(0,0,0,1);
 	// 根据写入通道设置对应的值
 	if(WriteChannel == 0) resultColor.r = intensity;
