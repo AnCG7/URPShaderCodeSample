@@ -3,7 +3,7 @@
 //【1】https://zznewclear13.github.io/posts/calculate-signed-distance-field-using-compute-shader/
 //https://github.com/alpacasking/JumpFloodingAlgorithm
 //https://blog.demofox.org/2016/02/29/fast-voronoi-diagrams-and-distance-dield-textures-on-the-gpu-with-the-jump-flooding-algorithm/
-
+//https://github.com/cecarlsen/SDFTextureGenerator
 
 // Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel InitSeed
