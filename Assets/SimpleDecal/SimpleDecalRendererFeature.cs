@@ -109,6 +109,10 @@ public class SimpleDecalPrerenderPass : ScriptableRenderPass
     {
         var cmd = CommandBufferPool.Get("Simple Decal Prerender");
         cmd.Clear();
+        if (_renderingLayersRT == null)
+        {
+            return;
+        }
         cmd.SetGlobalTexture(_renderingLayersRT.name, _renderingLayersRT.nameID);
         SetupProperties(cmd,8);
         context.ExecuteCommandBuffer(cmd);
