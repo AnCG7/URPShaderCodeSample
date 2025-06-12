@@ -1,6 +1,6 @@
 # URPShaderCodeSample
 
-<img src="Images/Base.png" style="zoom:40%;" /><img src="Images/Lighting.png" style="zoom:40%;" /><img src="Images/Cartoon.png" style="zoom:40%;" /><img src="Images/EdgeDetection.png" style="zoom:40%;" /><img src="Images/Effect.png" style="zoom:40%;" />
+<img src="Images/Base.png" alt="Base场景" width="20%" /><img src="Images/Lighting.png" alt="Lighting场景" width="20%" /><img src="Images/Cartoon.png" alt="Cartoon场景" width="20%" /><img src="Images/EdgeDetection.png" alt="EdgeDetection场景" width="20%" /><img src="Images/Effect.png" alt="Effect场景" width="20%" />
 
 Unity URP Shader 代码示例使用 Unity 2022.3.55f1c1、 Universal RP 14.0.11 、DX、Forward下编写和测试
 
