@@ -60,7 +60,7 @@ Shader "Lakehani/URP/Effect/Fur Base"
                 half3 lightWS = light.direction;
                 
                 //获取基础色
-                half3 albedo = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv).rgb * _BaseColor;
+                half3 albedo = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv).rgb * _BaseColor.rgb;
                 //计算漫反射Lambert
                 half NdotL = saturate(dot(normalWS, lightWS));
                 half halfLambert = pow(NdotL * 0.5 + 0.5,2.0);

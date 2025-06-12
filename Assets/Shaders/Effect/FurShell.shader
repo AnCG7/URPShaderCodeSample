@@ -185,7 +185,7 @@ Shader "Lakehani/URP/Effect/Fur Shell"
                 //获取环境光
                 half3 ambientColor = SampleSH(normalWS);
                 //获取基础色
-                half3 albedo = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv).rgb * _BaseColor;
+                half3 albedo = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv).rgb * _BaseColor.rgb;
                 //计算漫反射HalfLambert
                 half NdotL = dot(normalWS, lightWS);
                 half NdotLClamp = saturate(NdotL);
@@ -194,11 +194,12 @@ Shader "Lakehani/URP/Effect/Fur Shell"
                 half halfLambert = pow(saturate(NdotLOffset) * 0.5 + 0.5,2.0);
                 half3 diffuseColor = lightColor * halfLambert;
                 //计算菲尼尔反射
-                half3 fresnel = pow((1.0 - saturate(dot(normalWS, viewWS))), _RimPower) * occlusion * _RimColor;
+                half fresnel = pow((1.0 - saturate(dot(normalWS, viewWS))), _RimPower) * occlusion;
+                half3 rimColor = _RimColor.rgb * fresnel;
                 //计算各向异性高光
                 half3 specularColor = LightingHair(bitangentWS,lightWS,normalWS,viewWS,_SpecularRange,_SpecularColor.rgb);
                 specularColor = specularColor * _SpecularDensity * NdotLClamp * layerFactor;
-                half3 finalColor =  albedo * (ambientColor + diffuseColor) * occlusion + fresnel + specularColor;
+                half3 finalColor =  albedo * (ambientColor + diffuseColor) * occlusion + rimColor + specularColor;
 
                 half4 totalColor = half4(finalColor.rgb,alpha);
                 return totalColor;
